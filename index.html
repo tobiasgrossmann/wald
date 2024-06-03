@@ -5,27 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wald Einsamkeit Blog</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap');
-
         body {
             margin: 0;
-            font-family: 'Cardo', serif;
-            background-color: #2f4f4f;
-            color: #f5f5dc;
+            font-family: "Times New Roman", Times, serif;
+            background-color: #f5f5f5;
+            color: #333;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            line-height: 1.8;
         }
         nav {
-            background-color: #4b6e4b;
+            background-color: #2e3c2d;
             padding: 20px;
             box-sizing: border-box;
             overflow-y: auto;
         }
         nav h2 {
-            color: #c5e1a5;
-            font-size: 1.5em;
+            color: #e5e5e5;
+            font-family: "Bookman Old Style", serif;
             margin-bottom: 10px;
         }
         nav ul {
@@ -37,7 +34,7 @@
             margin: 10px 0;
         }
         nav ul li a {
-            color: #c8e6c9;
+            color: #d1d1d1;
             text-decoration: none;
         }
         nav ul li a:hover {
@@ -53,8 +50,7 @@
             display: flex;
             align-items: center;
             padding: 20px;
-            background-color: #556b2f;
-            border: 2px solid #8fbc8f;
+            background-color: #2e3c2d;
             border-radius: 8px;
             margin-bottom: 20px;
         }
@@ -63,33 +59,45 @@
             width: 100px;
             height: 100px;
             margin-right: 20px;
-            border: 2px solid #c5e1a5;
         }
         .intro div {
             max-width: 600px;
         }
         .intro h1 {
-            color: #c5e1a5;
+            color: #e5e5e5;
+            font-family: "Bookman Old Style", serif;
             margin: 0;
-            font-size: 2em;
+            font-size: 24px;
         }
         .intro p {
+            line-height: 1.6;
             margin: 10px 0 0 0;
+            font-size: 16px;
         }
         article {
             margin-bottom: 20px;
-            padding: 15px;
-            background-color: #6b8e23;
-            border: 2px solid #8fbc8f;
+            background-color: #fff;
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        article img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
         }
         article h1 {
-            color: #c5e1a5;
-            font-size: 1.8em;
-            margin-bottom: 10px;
+            color: #2e3c2d;
+            font-family: "Bookman Old Style", serif;
+            margin: 0;
+            padding: 20px;
+            font-size: 20px;
         }
         article p {
-            margin: 10px 0;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+            font-size: 16px;
         }
         @media (min-width: 768px) {
             body {
@@ -132,12 +140,16 @@
     <script>
         const posts = [
             { date: '2024-06-01', title: 'A Walk in the Forest', content: `
+                <img src="forest1.jpg" alt="Forest Image">
+                <h1>A Walk in the Forest</h1>
                 <p>The forest is a magical place where the trees whisper ancient secrets and the ground is carpeted with moss. 
                 As I walked along the path, the sunlight filtered through the leaves, creating a dappled pattern on the forest floor.</p>
                 <p>I could hear the chirping of birds and the rustling of leaves as small animals scurried about. 
                 It was a peaceful and serene experience, one that made me feel connected to nature.</p>
             ` },
             { date: '2024-05-28', title: 'Misty Mornings', content: `
+                <img src="forest2.jpg" alt="Forest Image">
+                <h1>Misty Mornings</h1>
                 <p>Mornings in the forest are particularly enchanting when a light mist hangs in the air. 
                 The mist creates an ethereal atmosphere, making the trees appear like shadowy giants.</p>
                 <p>As I walked, I could feel the moisture in the air and the coolness of the morning. 
@@ -150,24 +162,19 @@
             const navList = document.getElementById('nav-list');
             const blogContent = document.getElementById('blog-content');
 
-            posts.forEach(post => {
+            posts.forEach((post, index) => {
                 // Create navigation item
                 const navItem = document.createElement('li');
                 const navLink = document.createElement('a');
-                navLink.href = `#${post.title.replace(/\s+/g, '-').toLowerCase()}`;
+                navLink.href = `#post-${index}`;
                 navLink.innerHTML = `${post.date} - ${post.title}`;
                 navItem.appendChild(navLink);
                 navList.appendChild(navItem);
 
                 // Create blog post
                 const article = document.createElement('article');
-                article.id = post.title.replace(/\s+/g, '-').toLowerCase();
-                const title = document.createElement('h1');
-                title.innerText = post.title;
-                const content = document.createElement('div');
-                content.innerHTML = post.content;
-                article.appendChild(title);
-                article.appendChild(content);
+                article.id = `post-${index}`;
+                article.innerHTML = post.content;
                 blogContent.appendChild(article);
             });
         }
