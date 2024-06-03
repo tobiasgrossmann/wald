@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wald Einsamkeit Blog</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap');
+
         body {
             margin: 0;
-            font-family: 'Garamond', serif;
-            background: url('back.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #333;
+            font-family: 'Cardo', serif;
+            background-color: #2f4f4f;
+            color: #f5f5dc;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: rgba(255, 255, 255, 0.9); /* Fallback color for better readability */
+            line-height: 1.8;
         }
         nav {
-            background-color: rgba(255, 248, 220, 0.9);
+            background-color: #4b6e4b;
             padding: 20px;
             box-sizing: border-box;
             overflow-y: auto;
-            border-right: 1px solid #ccc;
         }
         nav h2 {
-            color: #8b4513;
-            font-family: 'Georgia', serif;
+            color: #c5e1a5;
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
         nav ul {
             list-style-type: none;
@@ -36,9 +37,8 @@
             margin: 10px 0;
         }
         nav ul li a {
-            color: #8b4513;
+            color: #c8e6c9;
             text-decoration: none;
-            font-family: 'Georgia', serif;
         }
         nav ul li a:hover {
             text-decoration: underline;
@@ -53,44 +53,43 @@
             display: flex;
             align-items: center;
             padding: 20px;
-            background-color: rgba(255, 248, 220, 0.9);
+            background-color: #556b2f;
+            border: 2px solid #8fbc8f;
             border-radius: 8px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
         }
         .intro img {
             border-radius: 50%;
             width: 100px;
             height: 100px;
             margin-right: 20px;
+            border: 2px solid #c5e1a5;
         }
         .intro div {
             max-width: 600px;
         }
         .intro h1 {
-            color: #8b4513;
+            color: #c5e1a5;
             margin: 0;
-            font-family: 'Georgia', serif;
+            font-size: 2em;
         }
         .intro p {
-            line-height: 1.6;
             margin: 10px 0 0 0;
-            font-family: 'Georgia', serif;
         }
         article {
             margin-bottom: 20px;
             padding: 15px;
-            background-color: rgba(255, 248, 220, 0.9);
+            background-color: #6b8e23;
+            border: 2px solid #8fbc8f;
             border-radius: 8px;
-            border: 1px solid #ccc;
         }
         article h1 {
-            color: #8b4513;
-            font-family: 'Georgia', serif;
+            color: #c5e1a5;
+            font-size: 1.8em;
+            margin-bottom: 10px;
         }
         article p {
-            line-height: 1.6;
-            font-family: 'Georgia', serif;
+            margin: 10px 0;
         }
         @media (min-width: 768px) {
             body {
@@ -121,7 +120,7 @@
             <img src="profile.jpg" alt="Profile Picture">
             <div>
                 <h1>Welcome to Wald Einsamkeit Blog</h1>
-                <p>Hello! A nature enthusiast who loves exploring the serene and mystical forests. 
+                <p>Hello! I'm Alex, a nature enthusiast who loves exploring the serene and mystical forests. 
                 Join me as I share my adventures, thoughts, and experiences of wandering through the woods.</p>
             </div>
         </section>
