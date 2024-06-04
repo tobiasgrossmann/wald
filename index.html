@@ -144,14 +144,17 @@
             // Add more posts as needed
         ];
 
-        function loadContent(url, container) {
-            fetch(url)
+        function loadContent(file, container) {
+            fetch(file)
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById(container).innerHTML = data;
+                    const postContainer = document.createElement('div');
+                    postContainer.innerHTML = data;
+                    container.appendChild(postContainer);
                 })
                 .catch(error => console.error('Error loading content:', error));
         }
+
 
         function loadPosts() {
             const navList = document.getElementById('nav-list');
