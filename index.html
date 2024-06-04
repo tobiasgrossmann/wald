@@ -157,6 +157,7 @@
 
             posts.forEach(post => {
                 // Create navigation item
+                console.debug("post:", post.title);
                 const navItem = document.createElement('li');
                 const navLink = document.createElement('a');
                 navLink.href = `#${post.title.replace(/\s+/g, '-').toLowerCase()}`;
@@ -165,6 +166,7 @@
                 navList.appendChild(navItem);
 
                 // Load blog post
+                console.debug("post:", post.file);
                 loadContent(post.file, 'blog-content');
             });
         }
