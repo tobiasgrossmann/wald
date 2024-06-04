@@ -129,14 +129,7 @@
         </ul>
     </nav>
     <main>
-        <section class="intro">
-            <img src="profile.jpg" alt="Profile Picture" loading="lazy">
-            <div>
-                <h1>Welcome to Wald Einsamkeit Blog</h1>
-                <p>Hello! I'm Pilar, a nature enthusiast who loves exploring the serene and mystical forests. 
-                Join me as I share my adventures, thoughts, and experiences of wandering through the woods.</p>
-            </div>
-        </section>
+        <div id="intro-container"></div>
         <section id="blog-content">
             <!-- Blog articles will be inserted here by JavaScript -->
         </section>
@@ -144,22 +137,19 @@
 
     <script>
         const posts = [
-            { date: '2024-06-01', title: 'A Walk in the Forest', content: `
-                <p>The forest is a magical place where the trees whisper ancient secrets and the ground is carpeted with moss. 
-                As I walked along the path, the sunlight filtered through the leaves, creating a dappled pattern on the forest floor.</p>
-                <p>I could hear the chirping of birds and the rustling of leaves as small animals scurried about. 
-                It was a peaceful and serene experience, one that made me feel connected to nature.</p>
-                <img src="forest1.jpg" alt="Forest" loading="lazy">
-            ` },
-            { date: '2024-05-28', title: 'Misty Mornings', content: `
-                <p>Mornings in the forest are particularly enchanting when a light mist hangs in the air. 
-                The mist creates an ethereal atmosphere, making the trees appear like shadowy giants.</p>
-                <p>As I walked, I could feel the moisture in the air and the coolness of the morning. 
-                Every now and then, a drop of water would fall from a leaf, adding to the symphony of sounds around me.</p>
-                <img src="forest2.jpg" alt="Forest" loading="lazy">
-            ` },
+            { date: '2024-06-01', title: 'A Walk in the Forest', file: 'post1.html' },
+            { date: '2024-05-28', title: 'Misty Mornings', file: 'post2.html' },
             // Add more posts as needed
         ];
+
+        function loadContent(url, container) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(container).innerHTML = data;
+                })
+                .catch(error => console.error('Error loading content:', error));
+        }
 
         function loadPosts() {
             const navList = document.getElementById('nav-list');
@@ -174,20 +164,13 @@
                 navItem.appendChild(navLink);
                 navList.appendChild(navItem);
 
-                // Create blog post
-                const article = document.createElement('article');
-                article.id = post.title.replace(/\s+/g, '-').toLowerCase();
-                const title = document.createElement('h1');
-                title.innerText = post.title;
-                const content = document.createElement('div');
-                content.innerHTML = post.content;
-                article.appendChild(title);
-                article.appendChild(content);
-                blogContent.appendChild(article);
+                // Load blog post
+                loadContent(post.file, 'blog-content');
             });
         }
 
         // Initial load
+        loadContent('intro.html', 'intro-container');
         loadPosts();
     </script>
 </body>
