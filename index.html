@@ -144,18 +144,6 @@
             // Add more posts as needed
         ];
 
-        function loadContent(file, container) {
-            fetch(file)
-                .then(response => response.text())
-                .then(data => {
-                    const postContainer = document.createElement('div');
-                    postContainer.innerHTML = data;
-                    container.appendChild(postContainer);
-                })
-                .catch(error => console.error('Error loading content:', error));
-        }
-
-
         function loadPosts() {
             const navList = document.getElementById('nav-list');
             const blogContent = document.getElementById('blog-content');
@@ -172,12 +160,23 @@
 
                 // Load blog post
                 console.debug("post:", post.file);
-                loadContent(post.file, 'blog-content');
+                loadContent(post.file, blogContent);
             });
         }
 
+        function loadContent(file, container) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    const postContainer = document.createElement('div');
+                    postContainer.innerHTML = data;
+                    container.appendChild(postContainer);
+                })
+                .catch(error => console.error('Error loading content:', error));
+        }
+
         // Initial load
-        loadContent('intro.html', 'intro-container');
+        loadContent('intro.html', document.getElementById('intro-container'));
         loadPosts();
     </script>
 </body>
